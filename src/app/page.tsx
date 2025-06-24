@@ -4,6 +4,7 @@ import { getClient } from "../../ApolloClient";
 import { gql } from "@apollo/client";
 import { NextPage } from "next";
 import ListItem from "./ListItem";
+import Navigation from "./Navigation";
 
 const GET_CHARACTERS = gql`
   query Characters($page: Int) {
@@ -29,16 +30,26 @@ const Home: NextPage<{
   });
 
   return (
-    <Stack align="center" maxW={{ xl: "1200px" }} m="0 auto">
-      <Blocking />
+    <Stack
+      maxW={{ xl: "1200px" }}
+      m="0 auto"
+      minH="100vh"
+      justifyContent="space-between"
+    >
+      <Stack align="center">
+        <Blocking />
 
-      <Flex gap="4" wrap="wrap">
-        {data.characters.results.map((character, index) => (
-          <ListItem character={character} key={index} />
-        ))}
-      </Flex>
+        <Flex gap="4" wrap="wrap">
+          {data.characters.results.map((character, index) => (
+            <ListItem character={character} key={index} />
+          ))}
+        </Flex>
+      </Stack>
 
-      <Box as="footer">v3.5</Box>
+      <Stack align="center">
+        <Navigation totalPages={data.characters.results.length} />
+        <Box as="footer">v3.5</Box>
+      </Stack>
     </Stack>
   );
 };
