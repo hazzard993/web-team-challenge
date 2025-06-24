@@ -1,9 +1,8 @@
-import { Box, Button, Flex, Stack, Text } from "@chakra-ui/react";
+import { Box, Stack } from "@chakra-ui/react";
 import Blocking from "./Blocking";
 import { getClient } from "../../ApolloClient";
 import { gql } from "@apollo/client";
 import { NextPage } from "next";
-import ListItem from "./ListItem";
 import Navigation from "./Navigation";
 import CharacterBrowser from "./CharacterBrowser";
 
@@ -40,15 +39,15 @@ const Home: NextPage<{
       m="0 auto"
       minH="100vh"
       justifyContent="space-between"
+      p="5"
     >
       <Stack align="center">
-        <Blocking />
-
         <CharacterBrowser characters={data.characters.results} />
       </Stack>
 
       <Stack align="center">
         <Navigation totalPages={data.characters.results.length} />
+        <Blocking />
         <Box as="footer">v3.5</Box>
       </Stack>
     </Stack>

@@ -1,6 +1,6 @@
 "use client";
 
-import { Button, Flex, Text } from "@chakra-ui/react";
+import { Box, Button, Flex, Text } from "@chakra-ui/react";
 import { ReadonlyURLSearchParams, useSearchParams } from "next/navigation";
 import { useRouter } from "next/navigation";
 import { FC } from "react";
@@ -17,13 +17,17 @@ const Navigation: FC<Props> = ({ totalPages }) => {
 
   return (
     <Flex align="center" gap="5">
-      <Button onClick={() => router.replace(buildURL(page - 1))}>
-        Previous
-      </Button>
+      <Box flex="1">
+        <Button onClick={() => router.replace(buildURL(page - 1))}>
+          Previous
+        </Button>
+      </Box>
       <Text>
         Page {page} of {totalPages}
       </Text>
-      <Button onClick={() => router.replace(buildURL(page + 1))}>Next</Button>
+      <Box flex="1">
+        <Button onClick={() => router.replace(buildURL(page + 1))}>Next</Button>
+      </Box>
     </Flex>
   );
 };

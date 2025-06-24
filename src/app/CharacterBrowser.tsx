@@ -1,13 +1,6 @@
 "use client";
 
-import {
-  Button,
-  Flex,
-  Image,
-  Stack,
-  Text,
-  useDisclosure,
-} from "@chakra-ui/react";
+import { Flex, Image, Stack, Text, useDisclosure } from "@chakra-ui/react";
 import ListItem from "./ListItem";
 import { FC, useState } from "react";
 import {
@@ -27,7 +20,7 @@ type Props = {
 
 const CharacterBrowser: FC<Props> = ({ characters }) => {
   const [character, setCharacter] = useState<Character | undefined>();
-  const { open, onOpen, onClose, setOpen } = useDisclosure();
+  const { open, onClose, setOpen } = useDisclosure();
   const background = useColorModeValue("white", "black");
 
   const handleItemClick = (character: Character) => {
@@ -43,13 +36,11 @@ const CharacterBrowser: FC<Props> = ({ characters }) => {
   return (
     <>
       <Modal isOpen={open} onClose={onClose}>
-        {/* <ModalOverlay bgColor={background} backdropBlur /> */}
         <ModalContent
           bgColor={background}
           maxW="40rem"
           m="8em auto"
           p="20"
-          position="relative"
           gap="20"
         >
           <Flex alignItems="start">
@@ -79,21 +70,13 @@ const CharacterBrowser: FC<Props> = ({ characters }) => {
                   Gender
                 </Text>
                 <Text as="dd">{character?.gender}</Text>
-                <Text as="dt" fontWeight="bold">
-                  Origin
-                </Text>
-                <Text as="dd">{character?.origin}</Text>
-                <Text as="dt" fontWeight="bold">
-                  Location
-                </Text>
-                <Text as="dd">{character?.location}</Text>
               </Stack>
             </Flex>
           </ModalBody>
           <ModalFooter>
-            <Button colorScheme="blue" mr={3} onClick={handleCloseButtonClick}>
+            <ModalCloseButton variant="ghost" onClick={handleCloseButtonClick}>
               Close
-            </Button>
+            </ModalCloseButton>
           </ModalFooter>
         </ModalContent>
       </Modal>
