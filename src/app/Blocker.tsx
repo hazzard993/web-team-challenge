@@ -9,6 +9,7 @@ import {
   ModalFooter,
   ModalBody,
   ModalCloseButton,
+  ModalOverlay,
 } from "@chakra-ui/modal";
 import {
   Button,
@@ -86,6 +87,7 @@ const Blocker = () => {
       </Button>
 
       <Modal isOpen={open} onClose={handleClose}>
+        <ModalOverlay />
         <ModalContent
           bgColor={background}
           maxW="40rem"
