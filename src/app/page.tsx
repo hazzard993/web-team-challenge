@@ -1,8 +1,9 @@
-import { Box } from "@chakra-ui/react";
+import { Box, Button, Flex, Stack, Text } from "@chakra-ui/react";
 import Blocking from "./Blocking";
 import { getClient } from "../../ApolloClient";
 import { gql } from "@apollo/client";
 import { NextPage } from "next";
+import ListItem from "./ListItem";
 
 const GET_CHARACTERS = gql`
   query Characters($page: Int) {
@@ -28,12 +29,17 @@ const Home: NextPage<{
   });
 
   return (
-    <>
+    <Stack align="center" maxW={{ xl: "1200px" }} m="0 auto">
       <Blocking />
-      <code>{JSON.stringify(data)}</code>
-      <code>{JSON.stringify(params)}</code>
+
+      <Flex gap="4" wrap="wrap">
+        {data.characters.results.map((character, index) => (
+          <ListItem character={character} key={index} />
+        ))}
+      </Flex>
+
       <Box as="footer">v3.5</Box>
-    </>
+    </Stack>
   );
 };
 

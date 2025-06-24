@@ -1,5 +1,6 @@
 "use client";
 
+import { useColorModeValue } from "@/components/ui/color-mode";
 import { FormControl, FormLabel } from "@chakra-ui/form-control";
 import {
   Modal,
@@ -22,6 +23,8 @@ const Blocking = () => {
 
   const { open, onOpen, onClose } = useDisclosure();
 
+  const background = useColorModeValue("white", "black");
+
   const handleSubmit = useCallback(() => {
     if (emailRef.current == null) return;
     if (jobTitleRef.current == null) return;
@@ -35,7 +38,7 @@ const Blocking = () => {
       <Button onClick={onOpen}>Open Modal</Button>
 
       <Modal isOpen={open} onClose={onClose}>
-        <ModalOverlay />
+        <ModalOverlay bgColor={background} />
         <ModalContent>
           <ModalHeader>Modal Title</ModalHeader>
           <ModalCloseButton />
