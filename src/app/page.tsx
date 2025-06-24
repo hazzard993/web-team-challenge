@@ -1,5 +1,5 @@
 import { Box, Stack } from "@chakra-ui/react";
-import Blocking from "./Blocking";
+import Blocker from "./Blocker";
 import { getClient } from "../../ApolloClient";
 import { gql } from "@apollo/client";
 import { NextPage } from "next";
@@ -47,7 +47,7 @@ const Home: NextPage<{
 
       <Stack align="center">
         <Navigation totalPages={data.characters.results.length} />
-        <Blocking />
+        <Blocker />
         <Box as="footer">v3.5</Box>
       </Stack>
     </Stack>

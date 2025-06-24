@@ -21,7 +21,7 @@ import {
 import { useCallback, useEffect, useRef, useState } from "react";
 import UserMessage, { Message } from "./UserMessage";
 
-const Blocking = () => {
+const Blocker = () => {
   const [storedUsername, setStoredUsername] = useLocalStorage("username");
   const [storedJobTitle, setStoredJobTitle] = useLocalStorage("jobTitle");
 
@@ -152,7 +152,7 @@ const Blocking = () => {
   );
 };
 
-export default Blocking;
+export default Blocker;
 
 type Loading = { type: "loading" };
 type Empty = { type: "empty" };
