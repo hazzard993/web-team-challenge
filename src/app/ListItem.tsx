@@ -19,7 +19,7 @@ const ListItem: FC<Props> = ({ character, onClick }) => {
       _hover={{ border: "px", borderColor: "white" }}
       onClick={handleOnClick}
     >
-      <Image src={character.image} />
+      <Image src={character.image} alt={`A picture of ${character.name}`} />
       <Text textAlign="center">{character.name}</Text>
     </Box>
   );

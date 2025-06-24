@@ -52,7 +52,12 @@ const CharacterBrowser: FC<Props> = ({ characters }) => {
 
           <ModalBody>
             <Flex gap="10">
-              <Image src={character?.image} boxSize="40" borderRadius="2xl" />
+              <Image
+                src={character?.image}
+                boxSize="40"
+                borderRadius="2xl"
+                alt={`An image of ${character?.name}`}
+              />
               <Stack as="dl">
                 <Text as="dt" fontWeight="bold">
                   Name

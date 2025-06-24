@@ -172,7 +172,7 @@ function useLocalStorage(key: string) {
     }
 
     setState({ type: "filled", value });
-  }, []);
+  }, [key]);
 
   const setValue = useCallback(
     (value: string) => {
@@ -185,7 +185,7 @@ function useLocalStorage(key: string) {
       localStorage.setItem(key, value);
       setState({ type: "filled", value });
     },
-    [state]
+    [key]
   );
 
   return [state, setValue] as const;
