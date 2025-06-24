@@ -5,6 +5,7 @@ import { gql } from "@apollo/client";
 import { NextPage } from "next";
 import ListItem from "./ListItem";
 import Navigation from "./Navigation";
+import CharacterBrowser from "./CharacterBrowser";
 
 const GET_CHARACTERS = gql`
   query Characters($page: Int) {
@@ -12,6 +13,10 @@ const GET_CHARACTERS = gql`
       results {
         name
         image
+        status
+        species
+        type
+        gender
       }
     }
   }
@@ -39,11 +44,7 @@ const Home: NextPage<{
       <Stack align="center">
         <Blocking />
 
-        <Flex gap="4" wrap="wrap">
-          {data.characters.results.map((character, index) => (
-            <ListItem character={character} key={index} />
-          ))}
-        </Flex>
+        <CharacterBrowser characters={data.characters.results} />
       </Stack>
 
       <Stack align="center">
